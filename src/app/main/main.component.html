@@ -1,0 +1,36 @@
+<mat-card>
+	<mat-card-content>
+		<form (ngSubmit)="search(searchBox.value)" #searchForm="ngForm">
+			<mat-form-field>
+				<input matInput #searchBox id="search-box" placeholder="Search Text" />
+			</mat-form-field>
+            <button type="submit" mat-raised-button color="primary">Search</button>
+        </form>
+	</mat-card-content>
+</mat-card>
+
+<div *ngIf="profileSearchResponse">
+    <h3>
+        Total Matching Users: {{profileSearchResponse.total_count}}
+    </h3>
+	
+	<mat-grid-list id="profileSearchResponses" cols="4">
+		<mat-grid-tile *ngFor="let profile of profileSearchResponse.items">
+			<mat-grid-tile-header>{{profile.login}}</mat-grid-tile-header>
+			<div>
+				<img src="{{profile.avatar_url}}" alt="User avatar">
+			</div>
+			<mat-list>
+				<mat-list-item>Score: {{profile.score}}</mat-list-item>
+				<mat-list-item>Type: {{profile.type}}</mat-list-item>
+				<mat-list-item>Is Site Admin: {{profile.site_admin}}</mat-list-item>
+			</mat-list>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>
+
+<div *ngIf="error">
+    <h3>
+        {{error}}
+    </h3>
+</div>

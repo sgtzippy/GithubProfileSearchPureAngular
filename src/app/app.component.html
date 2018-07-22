@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="over">
+		<button mat-raised-button color="accent" (click)="sidenav.close()">Close Menu</button>
+	</mat-sidenav>
+	
+	<mat-sidenav-content>
+		<mat-toolbar>
+			<mat-toolbar-row>
+				<button mat-button mat-icon-button (click)="sidenav.toggle()">
+					<mat-icon>menu</mat-icon>
+				</button> Toolbar
+			</mat-toolbar-row>
+		</mat-toolbar>
+		<h1>
+		  {{title}}
+		</h1>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
